@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 
 abstract class MVVMBaseViewModel : ViewModel() {
 
-    lateinit var noInternetListener: NoInternetListener
+    lateinit var noInternetListener: ResponseListener
     lateinit var view: View
     lateinit var navController: NavController
     lateinit var context: Context
@@ -38,7 +38,7 @@ abstract class MVVMBaseViewModel : ViewModel() {
     }
 
     // Show Toast
-    fun showToast(message: String) = noInternetListener.noInternet(message)
+    fun showToast(message: String) = noInternetListener.showToast(message)
 
     /*
     * This method only for API Calls

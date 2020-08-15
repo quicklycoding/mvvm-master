@@ -13,7 +13,7 @@ import org.kodein.di.DIAware
 import org.kodein.di.android.x.di
 
 abstract class MVVMBaseFragment<VM : MVVMBaseViewModel, T : ViewDataBinding> : Fragment(), DIAware,
-    NoInternetListener {
+    ResponseListener {
 
     lateinit var binding: T
     abstract val viewModel: VM
@@ -41,7 +41,7 @@ abstract class MVVMBaseFragment<VM : MVVMBaseViewModel, T : ViewDataBinding> : F
         return binding.root
     }
 
-    override fun noInternet(message: String) {
+    override fun showToast(message: String) {
         Toast.makeText(requireContext(), "No Internet", Toast.LENGTH_SHORT).show()
     }
 

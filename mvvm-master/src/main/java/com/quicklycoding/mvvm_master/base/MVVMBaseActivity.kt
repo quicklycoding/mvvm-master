@@ -9,7 +9,7 @@ import org.kodein.di.DIAware
 import org.kodein.di.android.di
 
 abstract class MVVMBaseActivity<VM : MVVMBaseViewModel, T : ViewDataBinding> : AppCompatActivity(),
-    DIAware, NoInternetListener {
+    DIAware, ResponseListener {
 
     lateinit var binding: T
     abstract val viewModel: VM
@@ -29,7 +29,7 @@ abstract class MVVMBaseActivity<VM : MVVMBaseViewModel, T : ViewDataBinding> : A
         viewModel.view = binding.root
     }
 
-    override fun noInternet(message: String) {
+    override fun showToast(message: String) {
         Toast.makeText(this, "No Internet", Toast.LENGTH_SHORT).show()
     }
 
