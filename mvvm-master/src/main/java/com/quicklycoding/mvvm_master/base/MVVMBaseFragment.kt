@@ -42,7 +42,7 @@ abstract class MVVMBaseFragment<VM : MVVMBaseViewModel, T : ViewDataBinding> : F
     }
 
     override fun showToast(message: String) {
-        Toast.makeText(requireContext(), "No Internet", Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 
 }
