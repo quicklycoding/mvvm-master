@@ -1,4 +1,4 @@
-package com.quicklycoding.mvvm_master.viewmodel
+package com.quicklycoding.mvvm_master.util
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

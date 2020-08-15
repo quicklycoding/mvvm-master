@@ -1,4 +1,4 @@
-package com.quicklycoding.mvvm_master
+package com.quicklycoding.mvvm_master.util
 
 import java.io.IOException
 

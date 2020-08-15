@@ -9,7 +9,7 @@ import org.kodein.di.DIAware
 import org.kodein.di.android.di
 
 abstract class MVVMBaseActivity<VM : MVVMBaseViewModel, T : ViewDataBinding> : AppCompatActivity(),
-    DIAware, ResponseListener {
+    DIAware, BasicListener {
 
     lateinit var binding: T
     abstract val viewModel: VM
@@ -25,11 +25,11 @@ abstract class MVVMBaseActivity<VM : MVVMBaseViewModel, T : ViewDataBinding> : A
         binding = DataBindingUtil.setContentView(this, layout)
         binding.lifecycleOwner = this
         binding.setVariable(bindingVariable, viewModel)
-        viewModel.noInternetListener = this
+        viewModel.basicListener = this
         viewModel.view = binding.root
     }
 
-    override fun showToast(message: String) {
+    override fun toast(message: String) {
         Toast.makeText(this, message,  Toast.LENGTH_SHORT).show()
     }
 

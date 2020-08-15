@@ -1,4 +1,4 @@
-package com.quicklycoding.mvvm_master.viewmodel
+package com.quicklycoding.mvvm_master.util
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment

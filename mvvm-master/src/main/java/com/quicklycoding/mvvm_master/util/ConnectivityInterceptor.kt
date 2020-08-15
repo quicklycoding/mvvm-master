@@ -1,9 +1,10 @@
-package com.quicklycoding.mvvm_master
+package com.quicklycoding.mvvm_master.util
 
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
+import com.quicklycoding.mvvm_master.util.NoInternetException
 import okhttp3.Interceptor
 import okhttp3.Response
 

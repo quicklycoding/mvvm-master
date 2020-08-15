@@ -1,5 +1,6 @@
 package com.quicklycoding.mvvm_master.base
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +14,7 @@ import org.kodein.di.DIAware
 import org.kodein.di.android.x.di
 
 abstract class MVVMBaseFragment<VM : MVVMBaseViewModel, T : ViewDataBinding> : Fragment(), DIAware,
-    ResponseListener {
+    BasicListener {
 
     lateinit var binding: T
     abstract val viewModel: VM
@@ -33,7 +34,7 @@ abstract class MVVMBaseFragment<VM : MVVMBaseViewModel, T : ViewDataBinding> : F
         binding.lifecycleOwner = this
 
         //custom attributes
-        viewModel.noInternetListener = this
+        viewModel.basicListener = this
         viewModel.context = requireContext()
         viewModel.view = binding.root
         viewModel.navController = findNavController()
@@ -41,8 +42,14 @@ abstract class MVVMBaseFragment<VM : MVVMBaseViewModel, T : ViewDataBinding> : F
         return binding.root
     }
 
-    override fun showToast(message: String) {
+    override fun toast(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun openActivity(activity: Class<*>) {
+        Intent(requireContext(), activity::class.java).apply {
+            startActivity(this)
+        }
     }
 
 }

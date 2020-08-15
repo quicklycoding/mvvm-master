@@ -16,7 +16,7 @@ abstract class MVVMBaseRecyclerAdapter<T : ViewDataBinding>(private val list: Li
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         binding =
-            DataBindingUtil.inflate<T>(LayoutInflater.from(parent.context), layout, parent, false)
+            DataBindingUtil.inflate(LayoutInflater.from(parent.context), layout, parent, false)
         return MyViewHolder(binding)
     }
 

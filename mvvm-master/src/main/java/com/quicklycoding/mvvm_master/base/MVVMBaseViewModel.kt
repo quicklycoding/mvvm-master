@@ -8,14 +8,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
-import com.quicklycoding.mvvm_master.ApiException
-import com.quicklycoding.mvvm_master.NoInternetException
+import com.quicklycoding.mvvm_master.util.ApiException
+import com.quicklycoding.mvvm_master.util.NoInternetException
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 abstract class MVVMBaseViewModel : ViewModel() {
 
-    lateinit var noInternetListener: ResponseListener
+    lateinit var basicListener: BasicListener
     lateinit var view: View
     lateinit var navController: NavController
     lateinit var context: Context
@@ -38,7 +38,10 @@ abstract class MVVMBaseViewModel : ViewModel() {
     }
 
     // Show Toast
-    fun showToast(message: String) = noInternetListener.showToast(message)
+    fun toast(message: String) = basicListener.toast(message)
+
+    // open Activity
+    fun openActivity(activity: Class<*>) = basicListener.openActivity(activity)
 
     /*
     * This method only for API Calls
@@ -51,9 +54,9 @@ abstract class MVVMBaseViewModel : ViewModel() {
             try {
                 work()
             } catch (ex: ApiException) {
-                showToast(ex.message!!)
+                toast(ex.message!!)
             } catch (ex: NoInternetException) {
-                showToast(ex.message!!)
+                toast(ex.message!!)
             } catch (ex: Exception) {
                 Log.d("BaseViewModel", "CoroutineAPICall: ${ex.message}")
             }
