@@ -19,14 +19,12 @@ abstract class MVVMBaseFragment<VM : MVVMBaseViewModel, T : ViewDataBinding> : F
     lateinit var binding: T
     abstract val viewModel: VM
 
-    override val di by di()
-
     abstract val bindingVariable: Int
-
     abstract val layout: Int
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, layout, container, false)
@@ -51,5 +49,7 @@ abstract class MVVMBaseFragment<VM : MVVMBaseViewModel, T : ViewDataBinding> : F
             startActivity(this)
         }
     }
+
+    override val di by di()
 
 }
