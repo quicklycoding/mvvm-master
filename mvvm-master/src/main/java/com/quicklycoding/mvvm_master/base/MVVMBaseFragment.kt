@@ -47,7 +47,7 @@ abstract class MVVMBaseFragment<VM : MVVMBaseViewModel, T : ViewDataBinding> : F
     }
 
     override fun openActivity(activity: Class<*>) {
-        Intent(requireContext(), activity::class.java).apply {
+        Intent(requireContext(), activity).apply {
             startActivity(this)
         }
     }

@@ -52,7 +52,7 @@ abstract class MVVMBaseViewModel : ViewModel() {
         job = viewModelScope.launch {
             showProgress()
             try {
-                work()
+               return@launch work()
             } catch (ex: ApiException) {
                 toast(ex.message!!)
             } catch (ex: NoInternetException) {
