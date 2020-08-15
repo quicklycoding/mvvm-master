@@ -16,9 +16,9 @@ import kotlinx.coroutines.launch
 abstract class MVVMBaseViewModel : ViewModel() {
 
     lateinit var basicListener: BasicListener
-    lateinit var view: View
     lateinit var navController: NavController
     lateinit var context: Context
+    lateinit var view: View
 
     //Store API calls and Asynchronous call in this JOB
     private var job: Job? = null
@@ -52,7 +52,7 @@ abstract class MVVMBaseViewModel : ViewModel() {
         job = viewModelScope.launch {
             showProgress()
             try {
-               return@launch work()
+               work()
             } catch (ex: ApiException) {
                 toast(ex.message!!)
             } catch (ex: NoInternetException) {
